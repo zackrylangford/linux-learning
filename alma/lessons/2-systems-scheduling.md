@@ -1,6 +1,3 @@
-
----
-
 # 🔴 AlmaLinux Lesson 2: Services, Systemd, and Scheduling
 
 ### 🕒 30-Minute Command-Line-Only Lesson (EC2 CLI)
@@ -15,7 +12,7 @@ Learn how to manage services using `systemctl`, inspect logs with `journalctl`, 
 
 ## ✅ Part 1: Inspect and Manage Services (10 mins)
 
-### Commands:
+**Commands:**
 
 ```bash
 systemctl list-units --type=service
@@ -23,40 +20,36 @@ systemctl status crond
 systemctl is-enabled crond
 ```
 
-### Tasks:
-
-* Identify a few running services.
-* Check the status of `crond` (the cron job scheduler).
-* Note whether it is enabled to start at boot.
-* If it’s not enabled, run:
+**Tasks:**
+- Identify a few running services.
+- Check the status of `crond` (the cron job scheduler).
+- Note whether it is enabled to start at boot.
+- If it’s not enabled, run:
 
   ```bash
   sudo systemctl enable --now crond
   ```
 
-### 🧠 Learn:
-
-* The difference between **active**, **enabled**, **failed**, and **masked** services.
-* Use `man systemctl` to understand options like `start`, `stop`, `restart`, `disable`.
+**🧠 Learn:**
+- The difference between **active**, **enabled**, **failed**, and **masked** services.
+- Use `man systemctl` to understand options like `start`, `stop`, `restart`, `disable`.
 
 ---
 
 ## ✅ Part 2: Read Service Logs (7–8 mins)
 
-### Commands:
+**Commands:**
 
 ```bash
 journalctl -u crond --since "10 minutes ago"
 ```
 
-### Tasks:
+**Tasks:**
+- View logs from the `crond` service.
+- Try running a command manually and see if it shows up in logs.
 
-* View logs from the `crond` service.
-* Try running a command manually and see if it shows up in logs.
-
-### Bonus:
-
-* Try a failing service:
+**Bonus:**
+- Try a failing service:
 
   ```bash
   sudo systemctl start badservice
@@ -74,7 +67,7 @@ journalctl -u crond --since "10 minutes ago"
 crontab -e
 ```
 
-### Add:
+**Add:**
 
 ```bash
 */5 * * * * echo "Hi from cron on $(date)" >> ~/cronlog.txt
@@ -92,7 +85,7 @@ tail ~/cronlog.txt
 
 ### 2. **Simple systemd timer (Bonus, if time)**
 
-#### Create files:
+**Create files:**
 
 ```bash
 mkdir -p ~/.config/systemd/user
@@ -123,7 +116,7 @@ Description=Say hello
 ExecStart=/bin/echo "Hello from systemd timer on $(date)" >> /home/ec2-user/hellolog.txt
 ```
 
-#### Start the timer:
+**Start the timer:**
 
 ```bash
 systemctl --user daemon-reexec
@@ -157,4 +150,6 @@ tail ~/hellolog.txt
   - [ ] Can cron and systemd timers conflict if they trigger the same script?
 ```
 
-Let me know if you'd like this lesson pushed to a GitHub repo, saved into a textdoc, or uploaded to `linux.zackrylangford.com`.
+---
+
+Let me know if you'd like this lesson pushed to a GitHub repo, saved into a textdoc, or uploaded to [linux.zackrylangford.com](https://linux.zackrylangford.com).
