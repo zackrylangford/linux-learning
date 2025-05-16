@@ -65,8 +65,18 @@ Regular system maintenance is crucial for security, stability, and performance. 
 
 ## 🧠 Reflection Questions (5 Minutes)
 - What's the difference between `apt upgrade` and `apt full-upgrade`?
+Answer: `apt upgrade` installs available upgrades without removing existing packages, while `apt full-upgrade` can remove packages if necessary to complete the upgrade.
+(source: [Ubuntu Wiki](https://wiki.ubuntu.com/AptGet/Howto))
+
 - Why is it important to run `apt update` before `apt upgrade`?
+
+Answer: Running `apt update` refreshes the package lists, ensuring you have the latest information about available updates before attempting to upgrade.
+(source: [Ubuntu Wiki](https://wiki.ubuntu.com/AptGet/Howto))
+
 - How often should you perform system updates on Ubuntu?
+Answer: It's recommended to perform system updates at least once a week, or more frequently if you're using the system for critical tasks. (source: [Ubuntu Wiki](https://wiki.ubuntu.com/UbuntuSecurity/Updates))
+
+
 
 ## 🔍 Exploring Further
 - Look at the APT configuration files:
