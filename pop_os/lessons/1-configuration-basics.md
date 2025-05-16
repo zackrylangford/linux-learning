@@ -17,6 +17,58 @@ Your shell environment is where you'll spend much of your time as a Linux user. 
 | `~/.profile` | Used by many shells, not just bash | Environment variables for all shells |
 | `~/.config/` | Modern configuration directory | Application-specific settings |
 
+### Understanding Login vs Non-Login Shells
+
+**Login shells** are initiated when:
+- You log in to the system directly (TTY console)
+- You connect via SSH
+- You use `su -` or `sudo -i` to switch users
+- You log in through a display manager
+
+Login shells read configuration from `/etc/profile`, then from the first file they find among `~/.bash_profile`, `~/.bash_login`, and `~/.profile` (in that order).
+
+**Non-login shells** are initiated when:
+- You open a terminal emulator in a GUI environment
+- You run a new shell by typing `bash` in an existing shell
+- You execute a shell script
+- You use `su` without the `-` flag
+
+Non-login shells only read from `~/.bashrc`.
+
+This distinction matters because you typically want to:
+- Put environment variables and PATH modifications in login shell files (`~/.bash_profile`)
+- Put aliases, functions, and prompt settings in `~/.bashrc`
+
+A common practice is to have your `~/.bash_profile` source your `~/.bashrc` to ensure consistent settings across both types of shells.
+
+### Configuration File Reference Guide
+
+| Configuration | ~/.bashrc | ~/.bash_profile | ~/.profile | /etc/profile |
+|---------------|----------|----------------|-----------|-------------|
+| **Aliases** | ✅ | ❌ | ❌ | ❌ |
+| **Functions** | ✅ | ❌ | ❌ | ❌ |
+| **Prompt customization** | ✅ | ❌ | ❌ | ❌ |
+| **Command completion** | ✅ | ❌ | ❌ | ❌ |
+| **Shell options** | ✅ | ❌ | ❌ | ❌ |
+| **PATH additions** | ❌ | ✅ | ✅ | ✅ (system-wide) |
+| **Environment variables** | ❌ | ✅ | ✅ | ✅ (system-wide) |
+| **Application env vars** | ❌ | ✅ | ✅ | ❌ |
+| **Server configuration** | ❌ | ✅ | ✅ | ❌ |
+| **GUI application env** | ❌ | ✅ | ✅ | ❌ |
+
+**Recommended Pattern:**
+```bash
+# In ~/.bash_profile
+# Set environment variables and PATH
+export PATH="$HOME/bin:$PATH"
+export JAVA_HOME="/usr/lib/jvm/default"
+
+# Source bashrc for interactive settings
+if [ -f "$HOME/.bashrc" ]; then
+    source "$HOME/.bashrc"
+fi
+```
+
 ## ✅ Practice Exercise (20 Minutes)
 
 1. **Examine your current bash configuration**

@@ -61,3 +61,11 @@ If you use Newsboat or an RSS reader:
 - **[Pop!_OS Recovery](https://support.system76.com/articles/pop-recovery/)** → Learn how to use the recovery partition
 - **[Hybrid Graphics](https://support.system76.com/articles/graphics-switch-pop/)** → Managing NVIDIA/Intel hybrid graphics
 - **[System76 Driver](https://support.system76.com/articles/system76-driver/)** → Understanding the System76 hardware driver
+
+---
+
+## 🐚 Shell Configuration Resources
+
+- **[The Bash Startup Files](https://www.gnu.org/software/bash/manual/html_node/Bash-Startup-Files.html)** → Official GNU Bash documentation on configuration files
+- **[Linux Journey - Shell Configuration](https://linuxjourney.com/lesson/shell-configuration)** → Beginner-friendly explanation of shell setup
+- **[ArchWiki - Bash](https://wiki.archlinux.org/title/bash#Configuration_files)** → Comprehensive guide to Bash configuration files
